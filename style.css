@@ -1,0 +1,30 @@
+.box{
+    display: flex;
+    margin-top: 2.5%;
+    margin-left: 16%;
+    
+}
+.srchbtn{
+    background-color: #ee6c4d;
+    border-color: #ee6c4d;
+    color: white;
+}
+body{
+    background-color: #3d5a80;
+}
+.createtext{
+    background-color: white; 
+}
+#Title{
+    
+     margin-left: 66.5%;
+     margin-top: 10%;
+     color:#ee6c4d;
+    }
+    .xtraBox{
+        display: flex;
+        margin-top: 2.5%;
+        margin-left: 16%;
+        justify-content:space-evenly;
+        
+    }
