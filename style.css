@@ -8,6 +8,7 @@
     background-color: #ee6c4d;
     border-color: #ee6c4d;
     color: white;
+    transition-duration: 0.4s;
 }
 body{
     background-color: #3d5a80;
@@ -18,13 +19,96 @@ body{
 #Title{
     
      margin-left: 66.5%;
-     margin-top: 10%;
+     margin-top: 8%;
      color:#ee6c4d;
     }
     .xtraBox{
         display: flex;
         margin-top: 2.5%;
-        margin-left: 16%;
+        margin-left: 15.5%;
         justify-content:space-evenly;
         
     }
+.boxTwo{
+    display: flex;
+    transition-duration: 0.4s;
+    margin-left: 16.3%;
+    padding: 0%;
+    width: 66%;
+    background-color:#ee6c4d;
+    justify-content: space-evenly;
+    color: white;
+    margin-bottom: 5px;;
+}
+.boxTwo:hover{
+    background-color:white; 
+    color: #ee6c4d;
+}
+.top{
+    display: flex;
+    transition-duration: 0.4s;
+    margin-left: 16.3%;
+    padding: 0%;
+    width: 66%;
+    background-color:#ee6c4d;
+    justify-content: space-evenly;
+    color: white;
+    margin-bottom: 5px;;
+    margin-top: 0%;
+    border-bottom: solid #3d5a80 15px;
+    text-decoration: underline;
+}
+.top2{
+    margin-top: 2.5%;
+    display: flex;
+    transition-duration: 0.4s;
+    margin-left: 16.3%;
+   padding-left: 30%;
+    width: 66%;
+    background-color:#ee6c4d;
+    
+    color: white;
+    text-decoration: underline;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+}
+.srchbtn:hover{
+    background-color: white;
+    color: #ee6c4d;
+}
+#srchnms li a{
+    display: flex;
+    transition-duration: 0.4s;
+    margin-left: 29.4%;
+    padding: 0%;
+    width: 138.4%;
+    height: 40px;
+    background-color:#ee6c4d;
+    justify-content: space-evenly;
+    color: white;
+    margin-bottom: 5px;;
+}
+#srchnms li a:hover{
+    background-color:white; 
+    color: #ee6c4d;
+}
+#srchnms
+{
+    list-style-type: none;
+}
+.center{
+    display: flex;
+    justify-content:center;
+    margin: 5px;
+   
+}
+#labl{
+    margin-top: 30px;
+    color: white;
+}
+
+

@@ -23,23 +23,304 @@
 
         <div class="row " >
             <div class="col-xs-8 col-sm-8 col-md-8 xtraBox">
-        <button type="button" class="btn btn-primary srchbtn" id = "artist" onclick = search()>by artist</button>
-        <button type="button" class="btn btn-primary srchbtn" id = "date" onclick = search()>by date</button>
-        <button type="button" class="btn btn-primary srchbtn" id = "city" onclick = search()>by city</button>
+        <button type="button" class="btn btn-primary srchbtn" id = "artist" onclick = searchArtist()>by event/artist</button>
+        <button type="button" class="btn btn-primary srchbtn" id = "date" onclick = searchDate()>by date</button>
+        <button type="button" class="btn btn-primary srchbtn" id = "city" onclick = citySearch()>by city</button>
     
             </div>
             </div>
 
     <div class="row " >
         <div class="col-xs-8 col-sm-8 col-md-8 box">
-    <button type="button" class="btn btn-primary srchbtn" id = "srchbtn" onclick = search()>search</button>
     
-    <input type="text" class="form-control createtext" id = "createText" placeholder = "" aria-label="Large" aria-describedby="inputGroup-sizing-sm"> 
+    
+    <input type="text" class="form-control createtext" id = "createText" placeholder = "put dates in as year-month-day" aria-label="Large" aria-describedby="inputGroup-sizing-sm"> 
 
         </div>
         </div>
+        
+       
+       
+
+        <div class = "flex-row">
+            <div class = "col-md-6 "  >
+                <ul id="srchnms">
+
+                </ul>
+
+            </div>
+        </div>
+
+        <div class = "flex-row">
+            <div class = "col-md-6 top2" >
+                <p> Featured Events</p>
+            </div>
+        </div>
+
+        <div class = "flex-row">
+            <div class = "col-md-6 top" >
+                <p id = "artistName"> Event/Artist Name</p>
+                <p id = "concertVenue">Concert Venue</p>
+                <p id = "concertDate">Concert Date</p>
+
+            </div>
+        </div>
+
+
+
+        <div class = "flex-row">
+            <a class = "col-md-6 boxTwo"  id = "link1" href = "#" >
+                
+                <p id = "test">TEstestestest</p>
+                <p id = "test1">test-1</p>
+                <p id = "test2">test-2</p>
+            </a>
+        </div>
+
+        <div class = "flex-row">
+            <a class = "col-md-6 boxTwo" id = "link2" href = "#">
+                <p id = "test3">TEstestestest</p>
+                <p id = "test4">test-1</p>
+                <p id = "test5">test-2</p>
+            </a>
+        </div>
+        <div class = "flex-row">
+            <a class = "col-md-6 boxTwo" id="link3" href="#">
+                <p id = "test6">TEstestestest</p>
+                <p id = "test7">test-1</p>
+                <p id = "test8">test-2</p>
+            </a>
+        </div>
+
+        <div class = "flex-row">
+            <a class = "col-md-6 boxTwo" id="link4" href="#">
+                <p id = "test9">TEstestestest</p>
+                <p id = "test10">test-1</p>
+                <p id = "test11">test-2</p>
+            </a>
+        </div>
+
+        <div class = "flex-row">
+            <a class = "col-md-6 boxTwo" id="link5" href="#">
+                <p id = "testOne">TEstestestest</p>
+                <p id = "testTwo">test-1</p>
+                <p id = "testThree">test-2</p>
+            </a>
+        </div>
+        <div class = "flex-row">
+            <a class = "col-md-6 boxTwo" id="link6" href="#">
+                <p id = "testFour">TEstestestest</p>
+                <p id = "testFive">test-1</p>
+                <p id = "testSix">test-2</p>
+            </a>
+        </div>
+        <div class = "flex-row">
+            <a class = "col-md-6 boxTwo" id="link7" href="#">
+                <p id = "testSeven">TEstestestest</p>
+                <p id = "testEight">test-1</p>
+                <p id = "testNine">test-2</p>
+            </a>
+        </div>
+        <div class = "flex-row center">
+        <h1 id="labl">This Year's Music Festival Lineups</h1>
+        </div>
+
+        <div class = "flex-row center">
+            
+<img src="lolla.png" width="600px" id="photo">
+</div>
+<div class = "flex-row center">
+<button type="button" class="btn btn-primary srchbtn" id = "city" onclick = show(1)>1</button>
+<button type="button" class="btn btn-primary srchbtn" id = "city" onclick = show(2)>2</button>
+<button type="button" class="btn btn-primary srchbtn" id = "city" onclick = show(3)>3</button>
+<button type="button" class="btn btn-primary srchbtn" id = "city" onclick = show(4)>4</button>
+<button type="button" class="btn btn-primary srchbtn" id = "city" onclick = show(5)>5</button>
+</div>
+
+
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    
+
 <script>
 
+
+const phtos = ["empty","lolla.png", "rolling loud cali.jpeg", "rolling loud fl.png","rolling loud ny.jpeg","coachella.jpeg"];
+
+
+function show(num){
+    var newPhoto =document.getElementById("photo");
+    newPhoto.setAttribute("src", phtos[num]);
+}
+
+
+var xhttp = new XMLHttpRequest();
+
+xhttp.open("GET", "https://api.seatgeek.com/2/events?client_id=MjQ4NjI4NTJ8MTYzOTA4NDIxOS4wOTM1NQ", true);
+xhttp.setRequestHeader("Content-type", "application/json");
+xhttp.send();
+xhttp.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status ==200){
+        console.log(JSON.parse(this.responseText));
+        var events1 = JSON.parse(xhttp.responseText);
+        console.log(events1);
+        document.getElementById("test").innerHTML = events1.events[0].title;
+        document.getElementById("test1").innerHTML = events1.events[0].venue.name;
+        document.getElementById("test2").innerHTML = events1.events[0].datetime_local;
+        document.getElementById("link1").href = events1.events[0].url;
+
+        document.getElementById("test3").innerHTML = events1.events[1].title;
+        document.getElementById("test4").innerHTML = events1.events[1].venue.name;
+        document.getElementById("test5").innerHTML = events1.events[1].datetime_local;
+        document.getElementById("link2").href = events1.events[1].url;
+        
+        document.getElementById("test6").innerHTML = events1.events[3].title;
+        document.getElementById("test7").innerHTML = events1.events[3].venue.name;
+        document.getElementById("test8").innerHTML = events1.events[3].datetime_local;
+        document.getElementById("link3").href = events1.events[3].url;
+
+        document.getElementById("test9").innerHTML = events1.events[4].title;
+        document.getElementById("test10").innerHTML = events1.events[4].venue.name;
+        document.getElementById("test11").innerHTML = events1.events[4].datetime_local;
+        document.getElementById("link4").href = events1.events[4].url;
+
+        document.getElementById("testOne").innerHTML = events1.events[8].title;
+        document.getElementById("testTwo").innerHTML = events1.events[8].venue.name;
+        document.getElementById("testThree").innerHTML = events1.events[8].datetime_local;
+        document.getElementById("link5").href = events1.events[8].url;
+
+        document.getElementById("testFour").innerHTML = events1.events[9].title;
+        document.getElementById("testFive").innerHTML = events1.events[9].venue.name;
+        document.getElementById("testSix").innerHTML = events1.events[9].datetime_local;
+        document.getElementById("link6").href = events1.events[9].url;
+
+        document.getElementById("testSeven").innerHTML = events1.events[6].title;
+        document.getElementById("testEight").innerHTML = events1.events[6].venue.name;
+        document.getElementById("testNine").innerHTML = events1.events[6].datetime_local;
+        document.getElementById("link7").href = events1.events[6].url;
+    }
+}
+
+var xhttp1 = new XMLHttpRequest();
+
+xhttp1.open("GET", "https://api.seatgeek.com/2/events?client_id=MjQ4NjI4NTJ8MTYzOTA4NDIxOS4wOTM1NQ", true);
+xhttp1.setRequestHeader("Content-type", "application/json");
+xhttp1.send();
+
+
+// function GoToLink(){
+//     window.open.
+// }
+
+
+function citySearch(){
+var xhttp1= new XMLHttpRequest();
+var city = document.getElementById("createText").value;
+console.log(city);
+xhttp1.open("GET", "https://api.seatgeek.com/2/venues/?client_id=MjQ4NjI4NTJ8MTYzOTA4NDIxOS4wOTM1NQ&city="+city  , true);
+xhttp1.setRequestHeader("Content-type", "application/json");
+xhttp1.send();
+xhttp1.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status ==200){
+        var events2 = JSON.parse(xhttp1.responseText);
+        
+        
+        document.getElementById("srchnms").innerHTML = "";
+        var x=0;
+        while(events2.venues[x]!=null){
+            var newestInput = document.createElement("li");
+            var newLink =document.createElement("a");
+            var addItem = events2.venues[x].name;
+            var addLink = events2.venues[x].url;
+            newestInput.setAttribute("id", events2.venues[x].name);
+            newLink.setAttribute("href", addLink);
+            var writeItem = document.createTextNode(addItem);
+            
+            newestInput.appendChild(newLink);
+            newLink.appendChild(writeItem);
+        document.getElementById("srchnms").appendChild(newestInput);
+        console.log("1");
+        x++;
+        }
+       
+        
+        document.getElementById("createText").value=""
+        console.log(this.responseText);
+
+    }}
+
+
+}
+    function searchArtist(){
+var xhttp2= new XMLHttpRequest();
+var artist = document.getElementById("createText").value;
+console.log(artist);
+xhttp2.open("GET", "https://api.seatgeek.com/2/events/?client_id=MjQ4NjI4NTJ8MTYzOTA4NDIxOS4wOTM1NQ&q="+artist  , true);
+xhttp2.setRequestHeader("Content-type", "application/json");
+xhttp2.send();
+xhttp2.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status ==200){
+        var events3 = JSON.parse(xhttp2.responseText);
+        console.log(this.responseText);
+        document.getElementById("srchnms").innerHTML = "";
+        var y=0;
+        while(events3.events[y]!=null){
+            var newestInput = document.createElement("li");
+            var newLink =document.createElement("a");
+            var addItem = events3.events[y].performers[0].name;
+            var addLink = events3.events[y].url;
+            var addVenue = events3.events[y].venue.name;
+            var addTime = events3.events[y].datetime_utc;
+            newestInput.setAttribute("id", events3.events[y].name);
+            newLink.setAttribute("href", addLink);
+            var writeItem = document.createTextNode(addItem+" at "+addVenue+" at "+addTime);
+            
+            newestInput.appendChild(newLink);
+            newLink.appendChild(writeItem);
+        document.getElementById("srchnms").appendChild(newestInput);
+        console.log("1");
+        y++;
+        }
+        document.getElementById("createText").value=""
+        console.log(this.responseText);
+    }}
+    }
+
+    function searchDate(){
+var xhttp3= new XMLHttpRequest();
+var date = document.getElementById("createText").value;
+console.log(date);
+xhttp3.open("GET", "https://api.seatgeek.com/2/events/?client_id=MjQ4NjI4NTJ8MTYzOTA4NDIxOS4wOTM1NQ&datetime_utc="+date  , true);
+xhttp3.setRequestHeader("Content-type", "application/json");
+xhttp3.send();
+xhttp3.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status ==200){
+        var events3 = JSON.parse(xhttp3.responseText);
+        console.log(this.responseText);
+        document.getElementById("srchnms").innerHTML = "";
+        var y=0;
+        while(events3.events[y]!=null){
+            var newestInput = document.createElement("li");
+            var newLink =document.createElement("a");
+            var addItem = events3.events[y].performers[0].name;
+            var addLink = events3.events[y].url;
+            var addVenue = events3.events[y].venue.name;
+            newestInput.setAttribute("id", events3.events[y].name);
+            newLink.setAttribute("href", addLink);
+            var writeItem = document.createTextNode(addItem+" at "+addVenue);
+            
+            newestInput.appendChild(newLink);
+            newLink.appendChild(writeItem);
+        document.getElementById("srchnms").appendChild(newestInput);
+        console.log("1");
+        y++;
+        }
+    }}
+    document.getElementById("createText").value=""
+        console.log(this.responseText);
+    }
 </script>
 </body>
 </html>
+
